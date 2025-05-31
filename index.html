@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>For Samara 💖</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #fbc2eb, #a6c1ee);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      color: #fff;
+      margin-bottom: 10px;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    #question {
+      font-size: 1.8em;
+      color: #fff;
+      margin-bottom: 40px;
+      min-height: 60px;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .buttons {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      position: relative;
+      width: 300px;
+      height: 80px;
+    }
+
+    button {
+      padding: 15px 30px;
+      font-size: 1.2em;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+    }
+
+    .yes {
+      background-color: #ff5e78;
+      color: white;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      animation: pulse 2s infinite;
+      position: relative;
+      z-index: 1;
+    }
+
+    .no {
+      background-color: #eeeeee;
+      color: #333;
+      position: absolute;
+      right: 0;
+      top: 0;
+      z-index: 2;
+    }
+
+    #finalMessage {
+      margin-top: 40px;
+      font-size: 1.6em;
+      color: #fff;
+      display: none;
+      animation: fadeIn 1.5s ease-in-out;
+    }
+
+    #heart {
+      font-size: 2.5rem;
+      animation: heartbeat 1s infinite;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.3); }
+    }
+
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      transform: rotate(45deg);
+      animation: float 6s linear infinite;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: -10px;
+      top: 0;
+    }
+
+    @keyframes float {
+      0% {
+        bottom: 0;
+        opacity: 1;
+      }
+      100% {
+        bottom: 100vh;
+        opacity: 0;
+        transform: translateX(100px) rotate(360deg);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Hi Samara ❤️</h1>
+  <div id="question">Will you always love me?</div>
+
+  <div class="buttons">
+    <button class="yes" onclick="nextQuestion()">Yes 💘</button>
+    <button class="no" id="noButton" onmouseover="moveNo()" onmousedown="moveNo()">No 🙈</button>
+  </div>
+
+  <div id="finalMessage">
+  I love you too, Samara! 💖<br>
+  You're the reason behind my smile every day. 😊<br>
+  My heart is happiest when you're near. ❤️<br>
+  Thank you for being mine, forever and always. 💍<br><br>
+  <span id="heart">❤️</span>
+</div>
+
+
+  <!-- Floating hearts -->
+  <script>
+    // Make floating hearts
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = 4 + Math.random() * 3 + "s";
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 7000);
+    }
+    setInterval(createHeart, 500);
+
+    // Questions
+    const questions = [
+      "Will you always love me?",
+      "Will you be mine forever?",
+      "Will you go on pizza dates with me forever? 🍕🍦💑",
+      "Will you always be my Girlfried?"
+    ];
+
+    let currentQuestion = 0;
+
+    function nextQuestion() {
+      currentQuestion++;
+      if (currentQuestion < questions.length) {
+        document.getElementById('question').textContent = questions[currentQuestion];
+      } else {
+        document.querySelector('.buttons').style.display = 'none';
+        document.getElementById('question').style.display = 'none';
+        document.getElementById('finalMessage').style.display = 'block';
+      }
+    }
+
+    // Moving No button
+    const noBtn = document.getElementById("noButton");
+    let offsetX = 0;
+    let offsetY = 0;
+
+    function moveNo() {
+      const maxMove = 60;
+      const dx = (Math.random() * maxMove - maxMove / 2);
+      const dy = (Math.random() * maxMove - maxMove / 2);
+      offsetX += dx;
+      offsetY += dy;
+      offsetX = Math.max(-100, Math.min(100, offsetX));
+      offsetY = Math.max(-50, Math.min(50, offsetY));
+      noBtn.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Happy 10th Birthday Davi!</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: radial-gradient(circle at top, #90caf9, #f48fb1);
+      color: white;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    .confetti {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    .confetti span {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: hsl(var(--hue), 100%, 70%);
+      animation: fall 5s linear infinite;
+      top: -10px;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(100vh) rotateZ(360deg);
+        opacity: 0;
+      }
+    }
+
+    .title-section {
+      margin-top: 80px;
+      padding: 0 20px;
+    }
+
+    h1 {
+      font-size: 3em;
+      background: linear-gradient(to right, #ff4081, #ffd740, #4fc3f7);
+      -webkit-background-clip: text;
+      color: transparent;
+      animation: glow 2s ease-in-out infinite alternate;
+      text-shadow: 2px 2px 20px rgba(255, 255, 255, 0.3);
+      margin: 0;
+    }
+
+    h2 {
+      font-size: 1.5em;
+      color: #fff;
+      margin-top: 10px;
+      animation: fadeIn 2s ease;
+    }
+
+    .message {
+      max-width: 700px;
+      margin: 30px auto;
+      font-size: 1.2em;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 25px;
+      border-radius: 20px;
+      backdrop-filter: blur(5px);
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      animation: fadeIn 3s ease;
+    }
+
+    footer {
+      font-size: 1.1em;
+      text-align: center;
+      margin: 20px;
+      color: #fffde7;
+      text-shadow: 0 0 10px #ff4081;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #fff; }
+      to { text-shadow: 0 0 25px #ff80ab; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Confetti animation -->
+  <div class="confetti">
+    <script>
+      for (let i = 0; i < 100; i++) {
+        const span = document.createElement('span');
+        span.style.left = Math.random() * 100 + '%';
+        span.style.animationDuration = 3 + Math.random() * 5 + 's';
+        span.style.setProperty('--hue', Math.random() * 360);
+        document.querySelector('.confetti').appendChild(span);
+      }
+    </script>
+  </div>
+
+  <div class="title-section">
+    <h1>🎉 Happy 10th Birthday, Davi! 🎉</h1>
+    <h2>You’re our little superstar! 🌟</h2>
+  </div>
+
+  <div class="message">
+    <p>
+      Dear Davi,<br><br>
+      Happy 10th birthday to the coolest, kindest, and most amazing kid around!<br><br>
+      You’ve grown into a boy full of wonder, joy, and endless curiosity. Each day with you is an adventure, and watching you grow has been the greatest gift of all.<br><br>
+      May your special day be filled with your favorite games, yummy cake, giggles, and magical surprises!<br><br>
+      Keep dreaming big, keep smiling bright, and always remember how deeply loved you are.<br><br>
+      You make this world a better place just by being in it. We’re all so proud of you and can't wait to see everything you’ll achieve.<br><br>
+      🎈 Happy 10th, our little rockstar! 🎂🚀💖
+    </p>
+  </div>
+
+  <footer>With lots of love and hugs — from all your biggest fans! 💕</footer>
+
+</body>
+</html>
